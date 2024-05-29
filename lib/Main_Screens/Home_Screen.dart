@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newssphere/API/news_api_service.dart';
 import 'package:newssphere/API/preferences_service.dart';
+import 'package:newssphere/Authentication/Login_Screen.dart';
 import 'package:newssphere/Main_Screens/settings_page.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
@@ -99,6 +100,36 @@ class _SwipeCardPageState extends State<SwipeCardPage> with SingleTickerProvider
     );
   }
 
+  void _logout() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Logout'),
+          content: Text('Are you sure you want to logout?'),
+          actions: [
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Logout'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                      (Route<dynamic> route) => false,
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,6 +147,10 @@ class _SwipeCardPageState extends State<SwipeCardPage> with SingleTickerProvider
               height: 34.0,
             ),
             onPressed: _openSettingsDialog,
+          ),
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: _logout,
           ),
         ],
       ),
