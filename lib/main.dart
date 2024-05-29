@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SwipeCardPage(apiKey: '30c6c760234a4f42a4ac08b27a8cf94a'),
+      home: SplashScreen(),
     );
   }
 }

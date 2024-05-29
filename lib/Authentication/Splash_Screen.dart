@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:newssphere/Authentication/Login_Screen.dart';
+import 'package:newssphere/Main_Screens/Home_Screen.dart';
 import 'package:newssphere/test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,13 +22,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     final prefs = await SharedPreferences.getInstance();
     final loggedIn = prefs.getBool('loggedIn') ?? false;
 
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 3));
 
     if (mounted) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (BuildContext context) =>
-          loggedIn ? test() : LoginScreen(),
+          loggedIn ? SwipeCardPage(apiKey: '30c6c760234a4f42a4ac08b27a8cf94a') : LoginScreen(),
         ),
       );
     }
@@ -39,7 +40,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue, Colors.lightBlueAccent],
+            colors: [Colors.yellowAccent, Colors.black],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -55,7 +56,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
               ),
               SizedBox(height: 20),
               Text(
-                'evoltsoft',
+                'NewsSphere',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,

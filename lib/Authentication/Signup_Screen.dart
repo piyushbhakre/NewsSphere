@@ -124,8 +124,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
-        backgroundColor: Colors.lightBlue,
+        title: Text('Sign Up',
+        style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.black,
         centerTitle: true,
       ),
       body: Container(
@@ -133,7 +134,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.lightBlueAccent, Colors.blueAccent],
+            colors: [Colors.yellowAccent, Colors.black],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -219,13 +220,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onPressed: _isLoading ? null : _signUp,
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor: Colors.blueAccent,
+                    backgroundColor: Colors.yellowAccent,
                     padding: EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
-                  child: _isLoading ? CircularProgressIndicator() : Text('Sign Up'),
+                  child: _isLoading ? CircularProgressIndicator() : Text('Sign Up',
+                  style: TextStyle(color: Colors.black),),
                 ),
                 SizedBox(height: 20),
                 RichText(

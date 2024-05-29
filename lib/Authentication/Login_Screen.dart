@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:newssphere/Authentication/Signup_Screen.dart';
-import 'package:newssphere/test.dart';
+import 'package:newssphere/Main_Screens/Home_Screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -47,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => test(),
+          builder: (context) => SwipeCardPage(apiKey: '30c6c760234a4f42a4ac08b27a8cf94a'),
         ),
       );
     } on FirebaseAuthException catch (e) {
@@ -67,12 +68,58 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  Future<void> _loginWithGoogle() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) {
+        setState(() {
+          _isLoading = false;
+        });
+        return; // The user canceled the sign-in
+      }
+
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('loggedIn', true);
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SwipeCardPage(apiKey: '30c6c760234a4f42a4ac08b27a8cf94a'),
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      String errorMessage = 'Error signing in with Google: $e';
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(errorMessage)),
+      );
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('NewsSphere'),
-        backgroundColor: Colors.lightBlue,
+        title: Text(
+          'NewsSphere',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.black,
         centerTitle: true,
       ),
       body: Container(
@@ -80,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
         height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.purpleAccent, Colors.deepPurple],
+            colors: [Colors.yellowAccent, Colors.black],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -92,8 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                if (_isLoading)
-                  LinearProgressIndicator(),
+                if (_isLoading) LinearProgressIndicator(),
                 SizedBox(height: 1),
                 Image.asset(
                   'assets/Icon/LOGIN_ICON.png', // Add a login image here
@@ -146,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ElevatedButton(
                   onPressed: _login,
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white, backgroundColor: Colors.blueAccent,
+                    foregroundColor: Colors.white, backgroundColor: Colors.black,
                     padding: EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -196,6 +242,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ), // Waving emoji
                   ],
+                ),
+                SizedBox(height: 20),
+                ElevatedButton.icon(
+                  onPressed: _loginWithGoogle,
+                  icon: Image.asset(
+                    'assets/Icon/google.png', // Add a Google logo here
+                    height: 24,
+                    width: 24,
+                  ),
+                  label: Text('Login with Google'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.black, backgroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
                 ),
               ],
             ),
