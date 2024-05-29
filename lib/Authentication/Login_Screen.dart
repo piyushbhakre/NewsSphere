@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:newssphere/Authentication/Signup_Screen.dart';
 import 'package:newssphere/Main_Screens/Home_Screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -48,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => SwipeCardPage(apiKey: '30c6c760234a4f42a4ac08b27a8cf94a'),
+          builder: (context) => SwipeCardPage(apiKey: '173f793c3b1649519f3713238c537531'),
         ),
       );
     } on FirebaseAuthException catch (e) {
@@ -68,48 +67,6 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  Future<void> _loginWithGoogle() async {
-    setState(() {
-      _isLoading = true;
-    });
-
-    try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null) {
-        setState(() {
-          _isLoading = false;
-        });
-        return; // The user canceled the sign-in
-      }
-
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-      final AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-
-      await FirebaseAuth.instance.signInWithCredential(credential);
-
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('loggedIn', true);
-
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => SwipeCardPage(apiKey: '30c6c760234a4f42a4ac08b27a8cf94a'),
-        ),
-      );
-    } on FirebaseAuthException catch (e) {
-      String errorMessage = 'Error signing in with Google: $e';
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(errorMessage)),
-      );
-    } finally {
-      setState(() {
-        _isLoading = false;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -244,22 +201,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 SizedBox(height: 20),
-                ElevatedButton.icon(
-                  onPressed: _loginWithGoogle,
-                  icon: Image.asset(
-                    'assets/Icon/google.png', // Add a Google logo here
-                    height: 24,
-                    width: 24,
-                  ),
-                  label: Text('Login with Google'),
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:newssphere/Authentication/Login_Screen.dart';
 import 'package:newssphere/Main_Screens/Home_Screen.dart';
-import 'package:newssphere/test.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 
 class SplashScreen extends ConsumerStatefulWidget {
   @override
@@ -28,7 +26,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (BuildContext context) =>
-          loggedIn ? SwipeCardPage(apiKey: '30c6c760234a4f42a4ac08b27a8cf94a') : LoginScreen(),
+          loggedIn ? SwipeCardPage(apiKey: '173f793c3b1649519f3713238c537531') : LoginScreen(),
         ),
       );
     }
@@ -67,9 +65,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
               LinearProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                 backgroundColor: Colors.grey,
-                value: 0.7, // Value should be between 0.0 and 1.0
               ),
-
             ],
           ),
         ),

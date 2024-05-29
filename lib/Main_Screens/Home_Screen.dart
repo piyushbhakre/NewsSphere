@@ -6,6 +6,8 @@ import 'package:newssphere/Main_Screens/settings_page.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class SwipeCardPage extends StatefulWidget {
   final String apiKey;
 
@@ -34,6 +36,7 @@ class _SwipeCardPageState extends State<SwipeCardPage> with SingleTickerProvider
   @override
   void initState() {
     super.initState();
+    _newsFuture = Future.value([]); // Initialize with an empty list
     _loadPreferences();
     _startNewsUpdateTimer();
 
@@ -62,7 +65,7 @@ class _SwipeCardPageState extends State<SwipeCardPage> with SingleTickerProvider
     setState(() {
       _categories = categories;
     });
-    _fetchNews();
+    _fetchNews(); // Ensure _newsFuture is updated
   }
 
   void _fetchNews() {
@@ -100,7 +103,10 @@ class _SwipeCardPageState extends State<SwipeCardPage> with SingleTickerProvider
     );
   }
 
-  void _logout() {
+  void _logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isLoggedIn', false);
+
     showDialog(
       context: context,
       builder: (context) {
@@ -149,7 +155,8 @@ class _SwipeCardPageState extends State<SwipeCardPage> with SingleTickerProvider
             onPressed: _openSettingsDialog,
           ),
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: Icon(Icons.logout,
+            color: Colors.white,),
             onPressed: _logout,
           ),
         ],
