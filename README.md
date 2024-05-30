@@ -21,13 +21,24 @@ NewsSphere is a modern news application that provides an engaging and streamline
 ## Screenshots
 
 Below are some screenshots showcasing the NewsSwipe app in action:
-![Screenshot_20240530-091615](https://github.com/piyushbhakre/NewsSphere/assets/170785113/ab998f38-255c-4063-a7d6-4737e274d428)
+![Screenshot_20240530-091615]()
 ![Screenshot_20240530-091624](https://github.com/piyushbhakre/NewsSphere/assets/170785113/d061a061-0bdd-46f9-a3ae-5a07af562457)
 ![Screenshot_20240530-091630](https://github.com/piyushbhakre/NewsSphere/assets/170785113/fdf20947-bbf3-4ca2-91ce-98af87ea3c59)
 ![Screenshot_20240530-091658](https://github.com/piyushbhakre/NewsSphere/assets/170785113/76fb0000-09c2-41a4-a080-3a398d5ae2a8)
 ![Screenshot_20240530-091705](https://github.com/piyushbhakre/NewsSphere/assets/170785113/254e8352-0fd4-4af1-b115-5d6e7f95a7a5)
 ![Screenshot_20240530-091716](https://github.com/piyushbhakre/NewsSphere/assets/170785113/1947a846-8ba7-4d77-9691-901f56f9e798)
-
+<table>
+  <tr>
+    <td><img src="https://github.com/piyushbhakre/NewsSphere/assets/170785113/ab998f38-255c-4063-a7d6-4737e274d428" width="200"/></td>
+    <td><img src="[assets/screenshots/screenshot2.png](https://github.com/piyushbhakre/NewsSphere/assets/170785113/fdf20947-bbf3-4ca2-91ce-98af87ea3c59)" width="200"/></td>
+    <td><img src="assets/screenshots/screenshot3.png" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/screenshot4.png" width="200"/></td>
+    <td><img src="assets/screenshots/screenshot5.png" width="200"/></td>
+    <td><img src="assets/screenshots/screenshot6.png" width="200"/></td>
+  </tr>
+</table>
 
 ## Getting Started
 
