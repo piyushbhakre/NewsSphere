@@ -20,7 +20,7 @@ NewsSphere is a modern news application that provides an engaging and streamline
 
 ## Screenshots
 
-Below are some screenshots showcasing the NewsSwipe app in action:
+Below are some screenshots showcasing the NewsSphere app in action:
 <table>
   <tr>
     <td><img src="https://github.com/piyushbhakre/NewsSphere/assets/170785113/ab998f38-255c-4063-a7d6-4737e274d428" width="200"/></td>
