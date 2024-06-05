@@ -41,49 +41,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyD3935Xhj5a_VXXAdIpM2FWqnn48E5c5Jc',
-    appId: '1:216694879990:web:c0d6225f5a51536d395ed7',
-    messagingSenderId: '216694879990',
-    projectId: 'newsphere-da26c',
-    authDomain: 'newsphere-da26c.firebaseapp.com',
-    storageBucket: 'newsphere-da26c.appspot.com',
-    measurementId: 'G-6SLVDFM5Y8',
+    apiKey: '',
+    appId: '',
+    messagingSenderId: '',
+    projectId: '',
+    authDomain: '',
+    storageBucket: '',
+    measurementId: '',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAbc9Rlob18OYK6LFR8KKyz8DhhU9YdVZM',
-    appId: '1:216694879990:android:8bb7bbb8e037ce73395ed7',
-    messagingSenderId: '216694879990',
-    projectId: 'newsphere-da26c',
-    storageBucket: 'newsphere-da26c.appspot.com',
+    apiKey: '',
+    appId: '',
+    messagingSenderId: '',
+    projectId: '',
+    storageBucket: '',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB8ceMEFWkS6Y-rgecYVvdcG7GlIFAHyQA',
-    appId: '1:216694879990:ios:fb80449c86330711395ed7',
-    messagingSenderId: '216694879990',
-    projectId: 'newsphere-da26c',
-    storageBucket: 'newsphere-da26c.appspot.com',
-    iosBundleId: 'com.example.newssphere',
+    apiKey: '',
+    appId: '',
+    messagingSenderId: '',
+    projectId: '',
+    storageBucket: '',
+    iosBundleId: '',
   );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyB8ceMEFWkS6Y-rgecYVvdcG7GlIFAHyQA',
-    appId: '1:216694879990:ios:fb80449c86330711395ed7',
-    messagingSenderId: '216694879990',
-    projectId: 'newsphere-da26c',
-    storageBucket: 'newsphere-da26c.appspot.com',
-    iosBundleId: 'com.example.newssphere',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyD3935Xhj5a_VXXAdIpM2FWqnn48E5c5Jc',
-    appId: '1:216694879990:web:f999461f5d9ed260395ed7',
-    messagingSenderId: '216694879990',
-    projectId: 'newsphere-da26c',
-    authDomain: 'newsphere-da26c.firebaseapp.com',
-    storageBucket: 'newsphere-da26c.appspot.com',
-    measurementId: 'G-FSLRGHTG0T',
-  );
-
 }
