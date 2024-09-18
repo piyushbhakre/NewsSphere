@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "216694879990",
-    "project_id": "newsphere-da26c",
-    "storage_bucket": "newsphere-da26c.appspot.com"
+    "project_number": "931756522123",
+    "project_id": "csvproject-f20bd",
+    "storage_bucket": "csvproject-f20bd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:216694879990:android:8bb7bbb8e037ce73395ed7",
+        "mobilesdk_app_id": "1:931756522123:android:73c79f84a81872343a328e",
         "android_client_info": {
           "package_name": "com.example.newssphere"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAbc9Rlob18OYK6LFR8KKyz8DhhU9YdVZM"
+          "current_key": "AIzaSyCmuGu83cFpc3MzOmHqEdqCcULt5LpB5_8"
         }
       ],
       "services": {
